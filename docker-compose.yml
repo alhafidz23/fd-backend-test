@@ -1,0 +1,20 @@
+version: "1"
+services:
+  api:
+    # replace username/repo:tag with your name and image details
+    build: .
+    image: female_api:1.0
+    deploy:
+      replicas: 2
+      resources:
+        limits:
+          cpus: "2"
+          memory: 100M
+      restart_policy:
+        condition: on-failure
+    ports:
+      - "8080:3010"
+    networks:
+      - apinet
+networks:
+  apinet:
